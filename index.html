@@ -1,0 +1,3218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>CampusCrack — Interview Preparation</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+:root{
+    --bg:#f6f7fb;
+    --card:#ffffff;
+    --text:#171717;
+    --muted:#6b7280;
+    --orange:#ff6b00;
+    --orange2:#ff8a3d;
+    --border:#e7e7e7;
+    --shadow:0 15px 45px rgba(0,0,0,.08);
+    --green:#16a34a;
+    --red:#ef4444;
+    --blue:#2563eb;
+}
+
+body.dark{
+    --bg:#080b12;
+    --card:#111722;
+    --text:#f5f7fb;
+    --muted:#9ca3af;
+    --border:#202938;
+    --shadow:0 15px 45px rgba(0,0,0,.35);
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Inter,Segoe UI,Arial,sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    transition:.3s;
+}
+
+/* ================= NAVBAR ================= */
+
+.navbar{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    height:72px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 6%;
+    background:rgba(255,255,255,.82);
+    backdrop-filter:blur(18px);
+    border-bottom:1px solid var(--border);
+}
+
+body.dark .navbar{
+    background:rgba(8,11,18,.82);
+}
+
+.logo{
+    font-size:23px;
+    font-weight:900;
+    color:var(--orange);
+    cursor:pointer;
+}
+
+.logo span{
+    color:var(--text);
+}
+
+.nav-links{
+    display:flex;
+    gap:8px;
+    align-items:center;
+}
+
+.nav-links button{
+    border:0;
+    background:transparent;
+    color:var(--muted);
+    padding:10px 15px;
+    border-radius:10px;
+    cursor:pointer;
+    font-weight:700;
+    transition:.25s;
+}
+
+.nav-links button:hover,
+.nav-links button.active{
+    background:rgba(255,107,0,.1);
+    color:var(--orange);
+}
+
+.nav-right{
+    display:flex;
+    gap:10px;
+    align-items:center;
+}
+
+.icon-btn{
+    width:40px;
+    height:40px;
+    border:1px solid var(--border);
+    background:var(--card);
+    color:var(--text);
+    border-radius:12px;
+    cursor:pointer;
+    font-size:18px;
+}
+
+.mobile-menu{
+    display:none;
+}
+
+/* ================= PAGES ================= */
+
+.page{
+    display:none;
+    min-height:calc(100vh - 72px);
+    animation:pageIn .45s ease;
+}
+
+.page.active{
+    display:block;
+}
+
+@keyframes pageIn{
+    from{
+        opacity:0;
+        transform:translateY(15px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.container{
+    width:min(1180px,92%);
+    margin:auto;
+}
+
+.section{
+    padding:70px 0;
+}
+
+.section-title{
+    font-size:32px;
+    font-weight:900;
+    margin-bottom:10px;
+}
+
+.section-subtitle{
+    color:var(--muted);
+    margin-bottom:35px;
+}
+
+/* ================= HOME HERO ================= */
+
+.hero{
+    min-height:650px;
+    display:flex;
+    align-items:center;
+    position:relative;
+    overflow:hidden;
+
+    background:
+    linear-gradient(90deg,
+        rgba(0,0,0,.88),
+        rgba(0,0,0,.55),
+        rgba(0,0,0,.2)
+    ),
+    url("https://www.hotelierindia.com/cloud/2024/12/17/Lovely-Professional-University-1-scaled.jpg");
+
+    background-size:cover;
+    background-position:center;
+}
+
+.hero-content{
+    max-width:700px;
+    color:white;
+}
+
+.badge{
+    display:inline-flex;
+    padding:8px 14px;
+    border-radius:30px;
+    background:rgba(255,107,0,.16);
+    border:1px solid rgba(255,140,70,.35);
+    color:#ffb07b;
+    font-weight:800;
+    margin-bottom:20px;
+}
+
+.hero h1{
+    font-size:clamp(45px,7vw,78px);
+    line-height:1;
+    font-weight:950;
+    margin-bottom:22px;
+}
+
+.hero h1 span{
+    color:#ff7a1a;
+}
+
+.hero p{
+    font-size:19px;
+    line-height:1.7;
+    color:#e5e7eb;
+    margin-bottom:30px;
+}
+
+.hero-buttons{
+    display:flex;
+    gap:14px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    border:0;
+    padding:14px 22px;
+    border-radius:13px;
+    font-weight:850;
+    cursor:pointer;
+    transition:.25s;
+}
+
+.btn:hover{
+    transform:translateY(-3px);
+}
+
+.btn-primary{
+    background:var(--orange);
+    color:white;
+    box-shadow:0 12px 30px rgba(255,107,0,.25);
+}
+
+.btn-secondary{
+    background:rgba(255,255,255,.1);
+    color:white;
+    border:1px solid rgba(255,255,255,.25);
+}
+
+/* ================= STATS ================= */
+
+.stats-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:18px;
+}
+
+.stat-card{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:20px;
+    padding:25px;
+    box-shadow:var(--shadow);
+    transition:.25s;
+}
+
+.stat-card:hover{
+    transform:translateY(-5px);
+}
+
+.stat-icon{
+    font-size:27px;
+    margin-bottom:15px;
+}
+
+.stat-number{
+    font-size:30px;
+    font-weight:950;
+}
+
+.stat-label{
+    color:var(--muted);
+    margin-top:5px;
+}
+
+/* ================= CARDS ================= */
+
+.card{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:22px;
+    box-shadow:var(--shadow);
+}
+
+.grid-3{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.grid-2{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:20px;
+}
+
+.feature-card{
+    padding:28px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.feature-card:hover{
+    transform:translateY(-7px);
+    border-color:rgba(255,107,0,.4);
+}
+
+.feature-icon{
+    font-size:42px;
+    margin-bottom:20px;
+}
+
+.feature-card h3{
+    font-size:21px;
+    margin-bottom:10px;
+}
+
+.feature-card p{
+    color:var(--muted);
+    line-height:1.6;
+}
+
+/* ================= ALERT ================= */
+
+.alert{
+    padding:18px 22px;
+    border-radius:16px;
+    background:linear-gradient(90deg,rgba(255,107,0,.12),rgba(255,138,61,.04));
+    border:1px solid rgba(255,107,0,.25);
+    margin-bottom:25px;
+}
+
+.alert strong{
+    color:var(--orange);
+}
+
+/* ================= PRACTICE ================= */
+
+.practice-top{
+    display:grid;
+    grid-template-columns:1.3fr .7fr;
+    gap:20px;
+}
+
+.mission{
+    padding:30px;
+}
+
+.mission-header{
+    display:flex;
+    justify-content:space-between;
+    gap:20px;
+    align-items:center;
+    margin-bottom:25px;
+}
+
+.xp-pill{
+    background:rgba(255,107,0,.12);
+    color:var(--orange);
+    padding:9px 13px;
+    border-radius:30px;
+    font-weight:900;
+}
+
+.question-number{
+    color:var(--orange);
+    font-weight:900;
+    margin-bottom:10px;
+}
+
+.question{
+    font-size:26px;
+    font-weight:900;
+    line-height:1.4;
+    margin-bottom:25px;
+}
+
+.options{
+    display:grid;
+    gap:12px;
+}
+
+.option{
+    width:100%;
+    text-align:left;
+    padding:16px 18px;
+    border-radius:14px;
+    border:1px solid var(--border);
+    background:var(--card);
+    color:var(--text);
+    cursor:pointer;
+    font-size:16px;
+    transition:.2s;
+}
+
+.option:hover{
+    border-color:var(--orange);
+    transform:translateX(3px);
+}
+
+.option.correct{
+    background:rgba(22,163,74,.12);
+    border-color:var(--green);
+    color:var(--green);
+}
+
+.option.wrong{
+    background:rgba(239,68,68,.12);
+    border-color:var(--red);
+    color:var(--red);
+}
+
+.feedback{
+    display:none;
+    margin-top:20px;
+    padding:18px;
+    border-radius:14px;
+}
+
+.feedback.show{
+    display:block;
+}
+
+.feedback.wrong-feedback{
+    background:rgba(239,68,68,.1);
+    border:1px solid rgba(239,68,68,.3);
+}
+
+.feedback.correct-feedback{
+    background:rgba(22,163,74,.1);
+    border:1px solid rgba(22,163,74,.3);
+}
+
+.quiz-actions{
+    display:flex;
+    justify-content:space-between;
+    margin-top:22px;
+    gap:10px;
+}
+
+.mini-btn{
+    border:1px solid var(--border);
+    background:var(--card);
+    color:var(--text);
+    padding:11px 16px;
+    border-radius:11px;
+    cursor:pointer;
+    font-weight:800;
+}
+
+/* ================= PROFILE ================= */
+
+.profile{
+    padding:30px;
+}
+
+.profile-head{
+    display:flex;
+    align-items:center;
+    gap:20px;
+}
+
+.avatar{
+    width:82px;
+    height:82px;
+    border-radius:50%;
+    display:grid;
+    place-items:center;
+    font-size:43px;
+    background:linear-gradient(135deg,#ff6b00,#ffb36d);
+}
+
+.profile h2{
+    margin-bottom:6px;
+}
+
+.profile p{
+    color:var(--muted);
+}
+
+.level{
+    margin-top:20px;
+}
+
+.progress{
+    height:10px;
+    border-radius:20px;
+    background:var(--border);
+    overflow:hidden;
+    margin-top:9px;
+}
+
+.progress-bar{
+    height:100%;
+    background:linear-gradient(90deg,#ff6b00,#ff9c57);
+    width:0%;
+    transition:1s;
+}
+
+/* ================= READINESS ================= */
+
+.readiness{
+    padding:30px;
+}
+
+.circle{
+    width:170px;
+    height:170px;
+    margin:10px auto 20px;
+    border-radius:50%;
+    display:grid;
+    place-items:center;
+    background:conic-gradient(var(--orange) 0deg,#e5e7eb 0deg);
+    position:relative;
+}
+
+body.dark .circle{
+    background:conic-gradient(var(--orange) 0deg,#252c38 0deg);
+}
+
+.circle::after{
+    content:"";
+    position:absolute;
+    width:132px;
+    height:132px;
+    border-radius:50%;
+    background:var(--card);
+}
+
+.circle span{
+    position:relative;
+    z-index:2;
+    font-size:31px;
+    font-weight:950;
+}
+
+/* ================= WEEK ================= */
+
+.week{
+    display:grid;
+    grid-template-columns:repeat(7,1fr);
+    gap:10px;
+}
+
+.day{
+    text-align:center;
+    padding:15px 5px;
+    border:1px solid var(--border);
+    border-radius:13px;
+    background:var(--card);
+}
+
+.day.done{
+    border-color:var(--green);
+    background:rgba(22,163,74,.1);
+}
+
+.day strong{
+    display:block;
+    margin-top:7px;
+}
+
+/* ================= LEADERBOARD ================= */
+
+.leaderboard{
+    padding:30px;
+}
+
+.rank-row{
+    display:grid;
+    grid-template-columns:55px 1fr 100px;
+    align-items:center;
+    gap:15px;
+    padding:17px 10px;
+    border-bottom:1px solid var(--border);
+}
+
+.rank{
+    font-size:22px;
+    font-weight:950;
+}
+
+.player{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.small-avatar{
+    width:42px;
+    height:42px;
+    border-radius:50%;
+    display:grid;
+    place-items:center;
+    background:rgba(255,107,0,.12);
+}
+
+.player-name{
+    font-weight:850;
+}
+
+.player-level{
+    color:var(--muted);
+    font-size:13px;
+}
+
+.points{
+    text-align:right;
+    font-weight:900;
+    color:var(--orange);
+}
+
+/* ================= LEVELS ================= */
+
+.level-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
+}
+
+.level-card{
+    padding:20px;
+    border-radius:17px;
+    border:1px solid var(--border);
+    background:var(--card);
+    position:relative;
+    overflow:hidden;
+}
+
+.level-card.current{
+    border-color:var(--orange);
+    box-shadow:0 0 0 2px rgba(255,107,0,.08);
+}
+
+.level-card.completed{
+    border-color:var(--green);
+}
+
+.lock{
+    float:right;
+}
+
+.level-title{
+    font-weight:900;
+    margin:8px 0;
+}
+
+.level-days{
+    color:var(--muted);
+    font-size:13px;
+}
+
+/* ================= PORTFOLIO ================= */
+
+.portfolio{
+    padding:35px;
+}
+
+.skills{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:20px;
+}
+
+.skill{
+    padding:8px 12px;
+    border-radius:30px;
+    background:rgba(255,107,0,.1);
+    color:var(--orange);
+    font-weight:800;
+    font-size:13px;
+}
+
+.info-table{
+    margin-top:25px;
+    display:grid;
+    gap:12px;
+}
+
+.info-line{
+    display:flex;
+    justify-content:space-between;
+    padding:14px 0;
+    border-bottom:1px solid var(--border);
+}
+
+.info-line span:first-child{
+    color:var(--muted);
+}
+
+/* ================= COMPANY ================= */
+
+.company{
+    padding:25px;
+    cursor:pointer;
+    transition:.25s;
+}
+
+.company:hover{
+    transform:translateY(-5px);
+}
+
+.company-logo{
+    width:58px;
+    height:58px;
+    display:grid;
+    place-items:center;
+    border-radius:15px;
+    background:rgba(255,107,0,.1);
+    font-size:27px;
+    margin-bottom:17px;
+}
+
+/* ================= CAMPUS ================= */
+
+.campus-section{
+    position:relative;
+    padding:100px 0;
+    color:white;
+    background:
+    linear-gradient(rgba(0,0,0,.72),rgba(0,0,0,.82)),
+    url("https://assets.kollegeapply.com/images/1751546245825-1488259246phpMxCfJr.jpeg");
+    background-size:cover;
+    background-position:center;
+}
+
+.campus-content{
+    text-align:center;
+    max-width:800px;
+    margin:auto;
+}
+
+.campus-content h2{
+    font-size:50px;
+    margin:20px 0;
+}
+
+.campus-content p{
+    color:#e5e7eb;
+    font-size:18px;
+    line-height:1.7;
+}
+
+.campus-images{
+    margin-top:40px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
+}
+
+.campus-images img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+    border-radius:18px;
+    transition:.4s;
+}
+
+.campus-images img:hover{
+    transform:scale(1.03);
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+    background:#080b12;
+    color:white;
+    padding:55px 0 25px;
+}
+
+.footer-grid{
+    display:grid;
+    grid-template-columns:2fr 1fr 1fr 1fr;
+    gap:40px;
+}
+
+footer h3{
+    margin-bottom:17px;
+}
+
+footer p,
+footer button{
+    color:#9ca3af;
+}
+
+footer button{
+    display:block;
+    background:none;
+    border:0;
+    margin:10px 0;
+    cursor:pointer;
+}
+
+footer button:hover{
+    color:white;
+}
+
+.footer-bottom{
+    margin-top:40px;
+    padding-top:20px;
+    border-top:1px solid #202938;
+    display:flex;
+    justify-content:space-between;
+    gap:15px;
+    color:#6b7280;
+}
+
+/* ================= MODAL ================= */
+
+.modal{
+    position:fixed;
+    inset:0;
+    z-index:2000;
+    background:rgba(0,0,0,.65);
+    backdrop-filter:blur(7px);
+    display:none;
+    place-items:center;
+    padding:20px;
+}
+
+.modal.show{
+    display:grid;
+}
+
+.modal-box{
+    width:min(600px,100%);
+    max-height:85vh;
+    overflow:auto;
+    background:var(--card);
+    color:var(--text);
+    border:1px solid var(--border);
+    border-radius:25px;
+    padding:30px;
+    animation:modalIn .3s ease;
+}
+
+@keyframes modalIn{
+    from{
+        transform:scale(.92);
+        opacity:0;
+    }
+    to{
+        transform:scale(1);
+        opacity:1;
+    }
+}
+
+.modal-close{
+    float:right;
+    border:0;
+    background:transparent;
+    color:var(--text);
+    font-size:25px;
+    cursor:pointer;
+}
+
+/* ================= TOAST ================= */
+
+.toast{
+    position:fixed;
+    right:25px;
+    bottom:25px;
+    z-index:3000;
+    background:#111827;
+    color:white;
+    padding:15px 20px;
+    border-radius:13px;
+    transform:translateY(120px);
+    opacity:0;
+    transition:.3s;
+}
+
+.toast.show{
+    transform:translateY(0);
+    opacity:1;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:900px){
+
+    .nav-links{
+        display:none;
+    }
+
+    .mobile-menu{
+        display:block;
+    }
+
+    .stats-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .grid-3,
+    .level-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .practice-top{
+        grid-template-columns:1fr;
+    }
+
+    .footer-grid{
+        grid-template-columns:1fr 1fr;
+    }
+}
+
+@media(max-width:600px){
+
+    .navbar{
+        padding:0 4%;
+    }
+
+    .hero{
+        min-height:600px;
+    }
+
+    .hero h1{
+        font-size:47px;
+    }
+
+    .section{
+        padding:50px 0;
+    }
+
+    .stats-grid,
+    .grid-2,
+    .grid-3,
+    .level-grid,
+    .campus-images,
+    .footer-grid{
+        grid-template-columns:1fr;
+    }
+
+    .week{
+        grid-template-columns:repeat(4,1fr);
+    }
+
+    .question{
+        font-size:21px;
+    }
+
+    .campus-content h2{
+        font-size:36px;
+    }
+
+    .footer-bottom{
+        flex-direction:column;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- =====================================================
+                    NAVBAR
+===================================================== -->
+
+<nav class="navbar">
+
+    <div class="logo" onclick="showPage('home')">
+        Campus<span>Crack</span>
+    </div>
+
+    <div class="nav-links">
+
+        <button id="navHome"
+                onclick="showPage('home')">
+            🏠 Home
+        </button>
+
+        <button id="navPractice"
+                onclick="showPage('practice')">
+            🎯 Practice
+        </button>
+
+        <button id="navWarrior"
+                onclick="showPage('warrior')">
+            ⚔️ Warrior
+        </button>
+
+        <button id="navPortfolio"
+                onclick="showPage('portfolio')">
+            👤 Portfolio
+        </button>
+
+        <button id="navLeaderboard"
+                onclick="showPage('leaderboard')">
+            🏆 Leaderboard
+        </button>
+
+        <button id="navCompanies"
+                onclick="showPage('companies')">
+            🏢 Companies
+        </button>
+
+    </div>
+
+    <div class="nav-right">
+
+        <button class="icon-btn"
+                onclick="toggleTheme()"
+                title="Dark mode">
+            🌙
+        </button>
+
+        <button class="icon-btn mobile-menu"
+                onclick="openMobileMenu()">
+            ☰
+        </button>
+
+    </div>
+
+</nav>
+
+
+<!-- =====================================================
+                        HOME
+===================================================== -->
+
+<main id="home" class="page active">
+
+    <section class="hero">
+
+        <div class="container">
+
+            <div class="hero-content">
+
+                <div class="badge">
+                    🎓 Built for Campus Placement
+                </div>
+
+                <h1>
+                    Crack Your
+                    <span>Campus Interview.</span>
+                </h1>
+
+                <p>
+                    One platform to prepare for DSA, Aptitude,
+                    HR, Communication and Technical interviews —
+                    with daily missions, streaks, XP and a
+                    complete placement journey.
+                </p>
+
+                <div class="hero-buttons">
+
+                    <button class="btn btn-primary"
+                            onclick="showPage('practice')">
+                        🚀 Start Today's Mission
+                    </button>
+
+                    <button class="btn btn-secondary"
+                            onclick="showPage('portfolio')">
+                        👤 View Portfolio
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="container">
+
+            <div id="dailyAlert" class="alert">
+                🔔 <strong>Daily Mission:</strong>
+                Complete today's questions to protect your streak.
+            </div>
+
+            <div class="stats-grid">
+
+                <div class="stat-card">
+                    <div class="stat-icon">🔥</div>
+                    <div class="stat-number"
+                         id="homeStreak">
+                        0
+                    </div>
+                    <div class="stat-label">
+                        Day Streak
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">🧠</div>
+                    <div class="stat-number"
+                         id="homeSolved">
+                        0
+                    </div>
+                    <div class="stat-label">
+                        Questions Solved
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">⚡</div>
+                    <div class="stat-number"
+                         id="homeXP">
+                        0
+                    </div>
+                    <div class="stat-label">
+                        XP Earned
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">🏆</div>
+                    <div class="stat-number"
+                         id="homeLevel">
+                        1
+                    </div>
+                    <div class="stat-label">
+                        Current Level
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="container">
+
+            <div class="section-title">
+                Your Interview Journey
+            </div>
+
+            <div class="section-subtitle">
+                Everything you need before walking into the placement room.
+            </div>
+
+            <div class="grid-3">
+
+                <div class="card feature-card"
+                     onclick="showPage('practice')">
+
+                    <div class="feature-icon">
+                        🎯
+                    </div>
+
+                    <h3>Daily Practice</h3>
+
+                    <p>
+                        Solve daily interview questions
+                        and increase your score.
+                    </p>
+
+                </div>
+
+
+                <div class="card feature-card"
+                     onclick="showPage('warrior')">
+
+                    <div class="feature-icon">
+                        ⚔️
+                    </div>
+
+                    <h3>30-Level Warrior</h3>
+
+                    <p>
+                        Progress from Recruit to
+                        INTERVIEW CRACKED.
+                    </p>
+
+                </div>
+
+
+                <div class="card feature-card"
+                     onclick="showPage('leaderboard')">
+
+                    <div class="feature-icon">
+                        🏆
+                    </div>
+
+                    <h3>Leaderboard</h3>
+
+                    <p>
+                        Track your position and
+                        compete with other students.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<!-- =====================================================
+                    PRACTICE PAGE
+===================================================== -->
+
+<section id="practice" class="page">
+
+    <div class="container section">
+
+        <div class="section-title">
+            🎯 Daily Interview Mission
+        </div>
+
+        <div class="section-subtitle">
+            Five questions. One mission. Build your interview confidence.
+        </div>
+
+        <div class="practice-top">
+
+            <div class="card mission">
+
+                <div class="mission-header">
+
+                    <div>
+                        <div class="question-number"
+                             id="questionNumber">
+                            Question 1 of 5
+                        </div>
+
+                        <h2>
+                            Today's Mission
+                        </h2>
+                    </div>
+
+                    <div class="xp-pill">
+                        +20 XP
+                    </div>
+
+                </div>
+
+
+                <div id="questionText"
+                     class="question">
+                    Loading question...
+                </div>
+
+
+                <div id="options"
+                     class="options">
+                </div>
+
+
+                <div id="feedback"
+                     class="feedback">
+                </div>
+
+
+                <div class="quiz-actions">
+
+                    <button class="mini-btn"
+                            onclick="previousQuestion()">
+                        ← Back
+                    </button>
+
+                    <button id="revealBtn"
+                            class="btn btn-primary"
+                            style="display:none"
+                            onclick="revealAnswer()">
+                        👀 Reveal Correct Answer
+                    </button>
+
+                    <button id="nextBtn"
+                            class="btn btn-primary"
+                            onclick="nextQuestion()"
+                            disabled>
+                        Next →
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div>
+
+                <div class="card profile">
+
+                    <div class="profile-head">
+
+                        <div class="avatar">
+                            👨‍💻
+                        </div>
+
+                        <div>
+                            <h2 id="practiceName">
+                                Student
+                            </h2>
+
+                            <p>
+                                Placement Warrior
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <div class="level">
+
+                        <div style="display:flex;justify-content:space-between">
+                            <strong>
+                                Level <span id="sideLevel">1</span>
+                            </strong>
+
+                            <span id="levelProgressText">
+                                0%
+                            </span>
+                        </div>
+
+                        <div class="progress">
+                            <div id="levelProgress"
+                                 class="progress-bar">
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="card readiness"
+                     style="margin-top:20px">
+
+                    <h3 style="text-align:center">
+                        Interview Readiness
+                    </h3>
+
+                    <div id="readinessCircle"
+                         class="circle">
+
+                        <span id="readinessText">
+                            0%
+                        </span>
+
+                    </div>
+
+                    <p style="text-align:center;color:var(--muted)">
+                        Keep solving to become interview-ready.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="section">
+
+            <div class="section-title">
+                Practice Areas
+            </div>
+
+            <div class="grid-3">
+
+                <div class="card feature-card"
+                     onclick="openMaterial('DSA')">
+
+                    <div class="feature-icon">💻</div>
+
+                    <h3>DSA Arena</h3>
+
+                    <p>
+                        Arrays, strings, searching,
+                        sorting and algorithms.
+                    </p>
+
+                </div>
+
+
+                <div class="card feature-card"
+                     onclick="openMaterial('Aptitude')">
+
+                    <div class="feature-icon">🧮</div>
+
+                    <h3>Aptitude Arena</h3>
+
+                    <p>
+                        Percentage, ratio, averages,
+                        probability and logic.
+                    </p>
+
+                </div>
+
+
+                <div class="card feature-card"
+                     onclick="openMaterial('HR')">
+
+                    <div class="feature-icon">🤝</div>
+
+                    <h3>HR Arena</h3>
+
+                    <p>
+                        Tell me about yourself,
+                        strengths, weaknesses and goals.
+                    </p>
+
+                </div>
+
+
+                <div class="card feature-card"
+                     onclick="openMaterial('Technical')">
+
+                    <div class="feature-icon">⚙️</div>
+
+                    <h3>Technical</h3>
+
+                    <p>
+                        OOP, DBMS, OS, networking
+                        and programming concepts.
+                    </p>
+
+                </div>
+
+
+                <div class="card feature-card"
+                     onclick="openMaterial('Communication')">
+
+                    <div class="feature-icon">🗣️</div>
+
+                    <h3>Communication</h3>
+
+                    <p>
+                        Improve speaking confidence
+                        and interview communication.
+                    </p>
+
+                </div>
+
+
+                <div class="card feature-card"
+                     onclick="openMaterial('GK')">
+
+                    <div class="feature-icon">🌍</div>
+
+                    <h3>General Knowledge</h3>
+
+                    <p>
+                        Basic technology, business
+                        and general awareness practice.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+                    WARRIOR PAGE
+===================================================== -->
+
+<section id="warrior" class="page">
+
+    <div class="container section">
+
+        <div class="section-title">
+            ⚔️ Placement Warrior
+        </div>
+
+        <div class="section-subtitle">
+            Complete questions and climb all 30 levels.
+        </div>
+
+        <div class="card"
+             style="padding:30px;margin-bottom:25px">
+
+            <div style="display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap">
+
+                <div>
+                    <div style="color:var(--orange);font-weight:900">
+                        CURRENT LEVEL
+                    </div>
+
+                    <h1 id="warriorLevel">
+                        Level 1
+                    </h1>
+
+                    <p id="warriorName"
+                       style="color:var(--muted)">
+                        Recruit
+                    </p>
+                </div>
+
+                <div style="text-align:right">
+
+                    <div style="font-size:28px;font-weight:950"
+                         id="warriorXP">
+                        0 XP
+                    </div>
+
+                    <div style="color:var(--muted)">
+                        Keep going 🚀
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="progress"
+                 style="margin-top:25px;height:14px">
+
+                <div id="warriorProgress"
+                     class="progress-bar">
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="level-grid"
+             id="levelGrid">
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+                    PORTFOLIO PAGE
+===================================================== -->
+
+<section id="portfolio" class="page">
+
+    <div class="container section">
+
+        <div class="section-title">
+            👤 Student Portfolio
+        </div>
+
+        <div class="section-subtitle">
+            Your placement profile at a glance.
+        </div>
+
+
+        <div class="card portfolio">
+
+            <div class="profile-head">
+
+                <div class="avatar">
+                    👨‍💻
+                </div>
+
+                <div>
+                    <h1 id="portfolioName">
+                        Student
+                    </h1>
+
+                    <p id="portfolioEmail">
+                        student@example.com
+                    </p>
+
+                    <div class="skills">
+
+                        <div class="skill">Python</div>
+                        <div class="skill">C++</div>
+                        <div class="skill">HTML</div>
+                        <div class="skill">CSS</div>
+                        <div class="skill">JavaScript</div>
+                        <div class="skill">DSA</div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="info-table">
+
+                <div class="info-line">
+                    <span>Current Level</span>
+                    <strong id="portfolioLevel">
+                        1
+                    </strong>
+                </div>
+
+                <div class="info-line">
+                    <span>Total XP</span>
+                    <strong id="portfolioXP">
+                        0
+                    </strong>
+                </div>
+
+                <div class="info-line">
+                    <span>Questions Solved</span>
+                    <strong id="portfolioSolved">
+                        0
+                    </strong>
+                </div>
+
+                <div class="info-line">
+                    <span>Current Streak</span>
+                    <strong id="portfolioStreak">
+                        0 days
+                    </strong>
+                </div>
+
+                <div class="info-line">
+                    <span>Readiness</span>
+                    <strong id="portfolioReadiness">
+                        0%
+                    </strong>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="section">
+
+            <div class="section-title">
+                📅 Weekly Streak
+            </div>
+
+            <div class="card"
+                 style="padding:20px">
+
+                <div class="week"
+                     id="weekGrid">
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+                LEADERBOARD PAGE
+===================================================== -->
+
+<section id="leaderboard" class="page">
+
+    <div class="container section">
+
+        <div class="section-title">
+            🏆 Leaderboard
+        </div>
+
+        <div class="section-subtitle">
+            See how your preparation score compares.
+        </div>
+
+        <div class="card leaderboard">
+
+            <div id="leaderboardList">
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+                    COMPANIES PAGE
+===================================================== -->
+
+<section id="companies" class="page">
+
+    <div class="container section">
+
+        <div class="section-title">
+            🏢 Company Preparation
+        </div>
+
+        <div class="section-subtitle">
+            Choose a company and focus your preparation.
+        </div>
+
+
+        <div class="grid-3">
+
+            <div class="card company"
+                 onclick="openCompany('TCS')">
+
+                <div class="company-logo">
+                    T
+                </div>
+
+                <h3>TCS</h3>
+
+                <p style="color:var(--muted);margin-top:8px">
+                    Aptitude • Coding • Interview
+                </p>
+
+            </div>
+
+
+            <div class="card company"
+                 onclick="openCompany('Infosys')">
+
+                <div class="company-logo">
+                    I
+                </div>
+
+                <h3>Infosys</h3>
+
+                <p style="color:var(--muted);margin-top:8px">
+                    Logic • Programming • HR
+                </p>
+
+            </div>
+
+
+            <div class="card company"
+                 onclick="openCompany('Accenture')">
+
+                <div class="company-logo">
+                    A
+                </div>
+
+                <h3>Accenture</h3>
+
+                <p style="color:var(--muted);margin-top:8px">
+                    Aptitude • Coding • Communication
+                </p>
+
+            </div>
+
+
+            <div class="card company"
+                 onclick="openCompany('Deloitte')">
+
+                <div class="company-logo">
+                    D
+                </div>
+
+                <h3>Deloitte</h3>
+
+                <p style="color:var(--muted);margin-top:8px">
+                    Technical • Communication • HR
+                </p>
+
+            </div>
+
+
+            <div class="card company"
+                 onclick="openCompany('Amazon')">
+
+                <div class="company-logo">
+                    A
+                </div>
+
+                <h3>Amazon</h3>
+
+                <p style="color:var(--muted);margin-top:8px">
+                    DSA • Problem Solving • Leadership
+                </p>
+
+            </div>
+
+
+            <div class="card company"
+                 onclick="openCompany('Microsoft')">
+
+                <div class="company-logo">
+                    M
+                </div>
+
+                <h3>Microsoft</h3>
+
+                <p style="color:var(--muted);margin-top:8px">
+                    DSA • CS Fundamentals • Problem Solving
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+                    FINAL CAMPUS
+===================================================== -->
+
+<section class="campus-section">
+
+    <div class="container">
+
+        <div class="campus-content">
+
+            <div class="badge">
+                🎓 CAMPUS INSPIRATION
+            </div>
+
+            <h2>
+                Your Campus.
+                <br>
+                Your Opportunity.
+            </h2>
+
+            <p>
+                Prepare today, build your confidence,
+                and walk into your campus interview
+                ready to give your best.
+            </p>
+
+            <div style="margin-top:30px">
+
+                <button class="btn btn-primary"
+                        onclick="showPage('practice')">
+                    🚀 Continue Training
+                </button>
+
+                <button class="btn btn-secondary"
+                        onclick="showPage('leaderboard')">
+                    🏆 View Leaderboard
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div class="campus-images">
+
+            <img src="https://www.hotelierindia.com/cloud/2024/12/17/Lovely-Professional-University-1-scaled.jpg"
+                 alt="LPU Campus">
+
+            <img src="https://assets.kollegeapply.com/images/1751546245825-1488259246phpMxCfJr.jpeg"
+                 alt="LPU Campus">
+
+            <img src="https://staticimg.amarujala.com/assets/images/2020/01/21/lpu_1579588723.png"
+                 alt="LPU Campus">
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+                        FOOTER
+===================================================== -->
+
+<footer>
+
+    <div class="container">
+
+        <div class="footer-grid">
+
+            <div>
+
+                <h2 style="color:#ff6b00">
+                    CampusCrack
+                </h2>
+
+                <p style="margin-top:15px;line-height:1.7">
+                    A student-focused interview preparation
+                    platform designed to make campus placement
+                    preparation structured, simple and engaging.
+                </p>
+
+            </div>
+
+
+            <div>
+
+                <h3>Platform</h3>
+
+                <button onclick="showPage('home')">
+                    Home
+                </button>
+
+                <button onclick="showPage('practice')">
+                    Practice
+                </button>
+
+                <button onclick="showPage('leaderboard')">
+                    Leaderboard
+                </button>
+
+            </div>
+
+
+            <div>
+
+                <h3>Preparation</h3>
+
+                <button onclick="openMaterial('DSA')">
+                    DSA
+                </button>
+
+                <button onclick="openMaterial('Aptitude')">
+                    Aptitude
+                </button>
+
+                <button onclick="openMaterial('HR')">
+                    HR
+                </button>
+
+                <button onclick="openMaterial('Communication')">
+                    Communication
+                </button>
+
+            </div>
+
+
+            <div>
+
+                <h3>Student</h3>
+
+                <button onclick="showPage('portfolio')">
+                    Portfolio
+                </button>
+
+                <button onclick="showPage('warrior')">
+                    Warrior Levels
+                </button>
+
+                <button onclick="showPage('companies')">
+                    Companies
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <div>
+                © 2026 CampusCrack • Student Project
+            </div>
+
+            <div>
+                Built for interview preparation 🚀
+            </div>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+<!-- =====================================================
+                        MODAL
+===================================================== -->
+
+<div id="modal"
+     class="modal"
+     onclick="closeModalOutside(event)">
+
+    <div class="modal-box">
+
+        <button class="modal-close"
+                onclick="closeModal()">
+            ×
+        </button>
+
+        <div id="modalContent">
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+                        TOAST
+===================================================== -->
+
+<div id="toast"
+     class="toast">
+</div>
+
+
+<script>
+
+/* =====================================================
+                    STORAGE
+===================================================== */
+
+let data = JSON.parse(
+    localStorage.getItem("campusCrackData")
+) || {
+
+    name:"Student",
+    email:"student@example.com",
+
+    xp:0,
+    solved:0,
+    streak:0,
+
+    lastDate:"",
+    completedDates:[],
+
+    theme:"light"
+};
+
+
+/* =====================================================
+                    SAVE DATA
+===================================================== */
+
+function saveData(){
+
+    localStorage.setItem(
+        "campusCrackData",
+        JSON.stringify(data)
+    );
+
+}
+
+
+/* =====================================================
+                    DATE
+===================================================== */
+
+function today(){
+
+    const d = new Date();
+
+    return d.getFullYear()
+        + "-"
+        + String(d.getMonth()+1).padStart(2,"0")
+        + "-"
+        + String(d.getDate()).padStart(2,"0");
+
+}
+
+
+/* =====================================================
+                    LEVELS
+===================================================== */
+
+const levels = [
+
+    ["Recruit","2 Days"],
+    ["Rookie Warrior","2 Days"],
+    ["Code Apprentice","3 Days"],
+    ["Logic Fighter","3 Days"],
+    ["Aptitude Scout","3 Days"],
+    ["Problem Solver","3 Days"],
+    ["DSA Warrior","4 Days"],
+    ["Algorithm Knight","3 Days"],
+    ["Debug Warrior","3 Days"],
+    ["Technical Fighter","4 Days"],
+    ["Interview Scout","3 Days"],
+    ["Communication Knight","3 Days"],
+    ["HR Warrior","4 Days"],
+    ["Confidence Fighter","3 Days"],
+    ["Mock Interviewer","4 Days"],
+    ["Placement Knight","3 Days"],
+    ["Company Warrior","4 Days"],
+    ["Coding Champion","4 Days"],
+    ["Logic Master","3 Days"],
+    ["Technical Knight","4 Days"],
+    ["Interview Veteran","4 Days"],
+    ["DSA Champion","5 Days"],
+    ["Problem-Solving Master","4 Days"],
+    ["Communication Master","4 Days"],
+    ["Placement Warrior","5 Days"],
+    ["Interview Elite","5 Days"],
+    ["Campus Champion","4 Days"],
+    ["Placement Legend","5 Days"],
+    ["Interview Hero","5 Days"],
+    ["INTERVIEW CRACKED","7 Days"]
+
+];
+
+
+function getLevel(){
+
+    return Math.min(
+        30,
+        Math.floor(data.solved / 3) + 1
+    );
+
+}
+
+
+/* =====================================================
+                    PAGE SYSTEM
+===================================================== */
+
+function showPage(page){
+
+    document.querySelectorAll(".page")
+    .forEach(p => p.classList.remove("active"));
+
+    const target = document.getElementById(page);
+
+    if(target){
+        target.classList.add("active");
+    }
+
+    document.querySelectorAll(".nav-links button")
+    .forEach(b => b.classList.remove("active"));
+
+    const navMap = {
+
+        home:"navHome",
+        practice:"navPractice",
+        warrior:"navWarrior",
+        portfolio:"navPortfolio",
+        leaderboard:"navLeaderboard",
+        companies:"navCompanies"
+
+    };
+
+    if(navMap[page]){
+
+        document
+        .getElementById(navMap[page])
+        .classList.add("active");
+
+    }
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+    updateUI();
+
+}
+
+
+/* =====================================================
+                    THEME
+===================================================== */
+
+function toggleTheme(){
+
+    document.body.classList.toggle("dark");
+
+    data.theme =
+        document.body.classList.contains("dark")
+        ? "dark"
+        : "light";
+
+    saveData();
+
+}
+
+
+function loadTheme(){
+
+    if(data.theme === "dark"){
+
+        document.body.classList.add("dark");
+
+    }
+
+}
+
+
+/* =====================================================
+                    QUIZ DATA
+===================================================== */
+
+const questions = [
+
+    {
+        q:"What is the average time complexity of Binary Search?",
+        options:[
+            "O(n)",
+            "O(log n)",
+            "O(n²)",
+            "O(1)"
+        ],
+        answer:1,
+        explanation:
+        "Binary Search repeatedly divides the search space into half."
+    },
+
+    {
+        q:"A student scores 72 out of 90. What is the percentage?",
+        options:[
+            "70%",
+            "75%",
+            "80%",
+            "85%"
+        ],
+        answer:2,
+        explanation:
+        "72 ÷ 90 × 100 = 80%."
+    },
+
+    {
+        q:"Which is the strongest answer to 'Tell me about yourself'?",
+        options:[
+            "A very long personal story",
+            "A short career-focused introduction with skills and goals",
+            "I don't know what to say",
+            "Only talk about hobbies"
+        ],
+        answer:1,
+        explanation:
+        "A strong introduction connects your background, skills, project experience and career goal."
+    },
+
+    {
+        q:"What should you say if you don't know an interview answer?",
+        options:[
+            "Make up an answer",
+            "Stay silent",
+            "Honestly say you don't know and show willingness to learn",
+            "Leave the interview"
+        ],
+        answer:2,
+        explanation:
+        "Honesty plus a learning attitude is much better than pretending."
+    },
+
+    {
+        q:"Which OOP concept allows the same interface to behave differently?",
+        options:[
+            "Inheritance",
+            "Encapsulation",
+            "Polymorphism",
+            "Compilation"
+        ],
+        answer:2,
+        explanation:
+        "Polymorphism allows the same interface or method concept to have different implementations."
+    }
+
+];
+
+
+let currentQuestion = 0;
+let answered = false;
+let revealed = false;
+
+
+/* =====================================================
+                    RENDER QUESTION
+===================================================== */
+
+function renderQuestion(){
+
+    const q = questions[currentQuestion];
+
+    document.getElementById("questionNumber")
+    .textContent =
+    `Question ${currentQuestion+1} of ${questions.length}`;
+
+    document.getElementById("questionText")
+    .textContent = q.q;
+
+    const options =
+        document.getElementById("options");
+
+    options.innerHTML = "";
+
+    q.options.forEach((option,index)=>{
+
+        const button =
+            document.createElement("button");
+
+        button.className = "option";
+
+        button.textContent =
+            String.fromCharCode(65+index)
+            + ". "
+            + option;
+
+        button.onclick = () =>
+            selectAnswer(index,button);
+
+        options.appendChild(button);
+
+    });
+
+
+    document.getElementById("feedback")
+    .className = "feedback";
+
+    document.getElementById("feedback")
+    .innerHTML = "";
+
+    document.getElementById("revealBtn")
+    .style.display = "none";
+
+    document.getElementById("nextBtn")
+    .disabled = true;
+
+    answered = false;
+    revealed = false;
+
+}
+
+
+/* =====================================================
+                    SELECT ANSWER
+===================================================== */
+
+function selectAnswer(index,button){
+
+    if(answered) return;
+
+    const q = questions[currentQuestion];
+
+    if(index === q.answer){
+
+        button.classList.add("correct");
+
+        const feedback =
+            document.getElementById("feedback");
+
+        feedback.className =
+            "feedback correct-feedback show";
+
+        feedback.innerHTML =
+        `
+        <strong>🤩 Correct!</strong>
+        <br><br>
+        ${q.explanation}
+        `;
+
+        answered = true;
+
+        document.getElementById("nextBtn")
+        .disabled = false;
+
+        data.xp += 20;
+        data.solved += 1;
+
+        updateStreak();
+
+        saveData();
+
+        updateUI();
+
+        showToast("🎉 Correct! +20 XP");
+
+    }else{
+
+        button.classList.add("wrong");
+
+        const feedback =
+            document.getElementById("feedback");
+
+        feedback.className =
+            "feedback wrong-feedback show";
+
+        feedback.innerHTML =
+        `
+        <strong>😔❌ Incorrect</strong>
+        <br><br>
+        Don't worry. Think again and try another answer.
+        `;
+
+        document.getElementById("revealBtn")
+        .style.display = "inline-block";
+
+        showToast("❌ Incorrect — try again");
+
+    }
+
+}
+
+
+/* =====================================================
+                    REVEAL ANSWER
+===================================================== */
+
+function revealAnswer(){
+
+    const q = questions[currentQuestion];
+
+    const optionButtons =
+        document.querySelectorAll(".option");
+
+    optionButtons[q.answer]
+    .classList.add("correct");
+
+    const feedback =
+        document.getElementById("feedback");
+
+    feedback.className =
+        "feedback correct-feedback show";
+
+    feedback.innerHTML =
+    `
+    <strong>💡 Correct Answer:</strong>
+    ${q.options[q.answer]}
+    <br><br>
+    ${q.explanation}
+    `;
+
+    revealed = true;
+
+    document.getElementById("revealBtn")
+    .style.display = "none";
+
+    document.getElementById("nextBtn")
+    .disabled = false;
+
+}
+
+
+/* =====================================================
+                    NEXT QUESTION
+===================================================== */
+
+function nextQuestion(){
+
+    if(
+        document.getElementById("nextBtn").disabled
+    ){
+        return;
+    }
+
+    if(currentQuestion < questions.length-1){
+
+        currentQuestion++;
+
+        renderQuestion();
+
+    }else{
+
+        completeMission();
+
+    }
+
+}
+
+
+/* =====================================================
+                    PREVIOUS
+===================================================== */
+
+function previousQuestion(){
+
+    if(currentQuestion > 0){
+
+        currentQuestion--;
+
+        renderQuestion();
+
+    }
+
+}
+
+
+/* =====================================================
+                    MISSION
+===================================================== */
+
+function completeMission(){
+
+    const todayDate = today();
+
+    if(!data.completedDates.includes(todayDate)){
+
+        data.completedDates.push(todayDate);
+
+        updateStreak();
+
+        saveData();
+
+    }
+
+    openModal(`
+        <div style="text-align:center">
+
+            <div style="font-size:60px">
+                🎯
+            </div>
+
+            <h1>
+                Mission Complete!
+            </h1>
+
+            <p style="color:var(--muted);margin:15px 0">
+                Great work! You completed today's
+                interview mission.
+            </p>
+
+            <h2 style="color:var(--orange)">
+                🔥 ${data.streak} Day Streak
+            </h2>
+
+            <p style="margin-top:10px">
+                Total XP: <strong>${data.xp}</strong>
+            </p>
+
+            <button class="btn btn-primary"
+                    style="margin-top:25px"
+                    onclick="closeModal();showPage('warrior')">
+                ⚔️ Continue Warrior Journey
+            </button>
+
+        </div>
+    `);
+
+}
+
+
+/* =====================================================
+                    STREAK
+===================================================== */
+
+function updateStreak(){
+
+    const t = today();
+
+    if(data.lastDate === t){
+
+        return;
+
+    }
+
+    const yesterday =
+        new Date();
+
+    yesterday.setDate(
+        yesterday.getDate()-1
+    );
+
+    const y =
+        yesterday.getFullYear()
+        + "-"
+        + String(yesterday.getMonth()+1).padStart(2,"0")
+        + "-"
+        + String(yesterday.getDate()).padStart(2,"0");
+
+
+    if(data.lastDate === y){
+
+        data.streak += 1;
+
+    }else{
+
+        data.streak = 1;
+
+    }
+
+    data.lastDate = t;
+
+    saveData();
+
+}
+
+
+/* =====================================================
+                    UI UPDATE
+===================================================== */
+
+function updateUI(){
+
+    const level = getLevel();
+
+    const readiness =
+        Math.min(
+            100,
+            Math.round((data.solved/90)*100)
+        );
+
+
+    /* HOME */
+
+    document.getElementById("homeStreak")
+    .textContent = data.streak;
+
+    document.getElementById("homeSolved")
+    .textContent = data.solved;
+
+    document.getElementById("homeXP")
+    .textContent = data.xp;
+
+    document.getElementById("homeLevel")
+    .textContent = level;
+
+
+    /* PRACTICE */
+
+    document.getElementById("practiceName")
+    .textContent = data.name;
+
+    document.getElementById("sideLevel")
+    .textContent = level;
+
+
+    const levelPercent =
+        ((data.solved % 3)/3)*100;
+
+    document.getElementById("levelProgress")
+    .style.width =
+        levelPercent + "%";
+
+    document.getElementById("levelProgressText")
+    .textContent =
+        Math.round(levelPercent) + "%";
+
+
+    /* READINESS */
+
+    document.getElementById("readinessText")
+    .textContent =
+        readiness + "%";
+
+    document.getElementById("readinessCircle")
+    .style.background =
+        `conic-gradient(
+            var(--orange) ${readiness*3.6}deg,
+            #e5e7eb ${readiness*3.6}deg
+        )`;
+
+
+    if(document.body.classList.contains("dark")){
+
+        document.getElementById("readinessCircle")
+        .style.background =
+        `conic-gradient(
+            var(--orange) ${readiness*3.6}deg,
+            #252c38 ${readiness*3.6}deg
+        )`;
+
+    }
+
+
+    /* PORTFOLIO */
+
+    document.getElementById("portfolioName")
+    .textContent = data.name;
+
+    document.getElementById("portfolioEmail")
+    .textContent = data.email;
+
+    document.getElementById("portfolioLevel")
+    .textContent = level;
+
+    document.getElementById("portfolioXP")
+    .textContent = data.xp;
+
+    document.getElementById("portfolioSolved")
+    .textContent = data.solved;
+
+    document.getElementById("portfolioStreak")
+    .textContent =
+        data.streak + " days";
+
+    document.getElementById("portfolioReadiness")
+    .textContent =
+        readiness + "%";
+
+
+    /* WARRIOR */
+
+    document.getElementById("warriorLevel")
+    .textContent =
+        "Level " + level;
+
+    document.getElementById("warriorName")
+    .textContent =
+        levels[level-1][0];
+
+    document.getElementById("warriorXP")
+    .textContent =
+        data.xp + " XP";
+
+    document.getElementById("warriorProgress")
+    .style.width =
+        ((data.solved%3)/3)*100 + "%";
+
+
+    renderLevels();
+
+    renderLeaderboard();
+
+    renderWeek();
+
+}
+
+
+/* =====================================================
+                    LEVEL GRID
+===================================================== */
+
+function renderLevels(){
+
+    const grid =
+        document.getElementById("levelGrid");
+
+    grid.innerHTML = "";
+
+    const current =
+        getLevel();
+
+    levels.forEach((level,index)=>{
+
+        const number = index+1;
+
+        const card =
+            document.createElement("div");
+
+        card.className = "level-card";
+
+        if(number < current){
+
+            card.classList.add("completed");
+
+        }
+
+        if(number === current){
+
+            card.classList.add("current");
+
+        }
+
+        const locked =
+            number > current;
+
+        card.innerHTML =
+        `
+        <div>
+            <span style="font-size:13px;color:var(--orange)">
+                LEVEL ${number}
+            </span>
+
+            <span class="lock">
+                ${locked ? "🔒" : "🔓"}
+            </span>
+        </div>
+
+        <div class="level-title">
+            ${level[0]}
+        </div>
+
+        <div class="level-days">
+            ${level[1]}
+        </div>
+
+        <div style="margin-top:12px;font-size:13px">
+            ${
+                number < current
+                ? "✅ Completed"
+                : number === current
+                ? "⚡ Current Level"
+                : "🔒 Locked"
+            }
+        </div>
+        `;
+
+        grid.appendChild(card);
+
+    });
+
+}
+
+
+/* =====================================================
+                    LEADERBOARD
+===================================================== */
+
+function renderLeaderboard(){
+
+    const players = [
+
+        {
+            name:"Aarav",
+            xp:820,
+            avatar:"🧑‍💻"
+        },
+
+        {
+            name:"Riya",
+            xp:740,
+            avatar:"👩‍💻"
+        },
+
+        {
+            name:"Kabir",
+            xp:660,
+            avatar:"👨‍💻"
+        },
+
+        {
+            name:data.name,
+            xp:data.xp,
+            avatar:"🧑‍🎓"
+        },
+
+        {
+            name:"Ananya",
+            xp:410,
+            avatar:"👩‍🎓"
+        }
+
+    ];
+
+
+    players.sort(
+        (a,b)=>b.xp-a.xp
+    );
+
+
+    const list =
+        document.getElementById("leaderboardList");
+
+    list.innerHTML = "";
+
+
+    players.forEach((player,index)=>{
+
+        const row =
+            document.createElement("div");
+
+        row.className = "rank-row";
+
+        row.innerHTML =
+        `
+        <div class="rank">
+            ${index===0?"🥇":index===1?"🥈":index===2?"🥉":"#"+(index+1)}
+        </div>
+
+        <div class="player">
+
+            <div class="small-avatar">
+                ${player.avatar}
+            </div>
+
+            <div>
+
+                <div class="player-name">
+                    ${player.name}
+                </div>
+
+                <div class="player-level">
+                    Level ${Math.min(
+                        30,
+                        Math.floor(player.xp/60)+1
+                    )}
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="points">
+            ${player.xp} XP
+        </div>
+        `;
+
+        list.appendChild(row);
+
+    });
+
+}
+
+
+/* =====================================================
+                    WEEK
+===================================================== */
+
+function renderWeek(){
+
+    const grid =
+        document.getElementById("weekGrid");
+
+    grid.innerHTML = "";
+
+    const names =
+        ["Mon","Tue","Wed","Thu","Fri","Sat","Sun"];
+
+    names.forEach((name,index)=>{
+
+        const d =
+            new Date();
+
+        const day =
+            d.getDay() || 7;
+
+        d.setDate(
+            d.getDate() - day + index + 1
+        );
+
+        const date =
+            d.getFullYear()
+            + "-"
+            + String(d.getMonth()+1).padStart(2,"0")
+            + "-"
+            + String(d.getDate()).padStart(2,"0");
+
+
+        const div =
+            document.createElement("div");
+
+        div.className =
+            "day "
+            + (
+                data.completedDates.includes(date)
+                ? "done"
+                : ""
+            );
+
+        div.innerHTML =
+        `
+        ${name}
+        <strong>
+            ${
+                data.completedDates.includes(date)
+                ? "✓"
+                : "—"
+            }
+        </strong>
+        `;
+
+        grid.appendChild(div);
+
+    });
+
+}
+
+
+/* =====================================================
+                    MATERIAL MODAL
+===================================================== */
+
+function openMaterial(type){
+
+    const materials = {
+
+        DSA:[
+            "Arrays",
+            "Strings",
+            "Binary Search",
+            "Sorting",
+            "Linked List"
+        ],
+
+        Aptitude:[
+            "Percentage",
+            "Ratio",
+            "Average",
+            "Profit & Loss",
+            "Probability"
+        ],
+
+        HR:[
+            "Tell me about yourself",
+            "Strengths",
+            "Weaknesses",
+            "Career goals",
+            "Why should we hire you?"
+        ],
+
+        Technical:[
+            "OOP",
+            "DBMS",
+            "Operating Systems",
+            "Computer Networks",
+            "Programming Fundamentals"
+        ],
+
+        Communication:[
+            "Self introduction",
+            "Speaking confidence",
+            "Professional vocabulary",
+            "Interview etiquette",
+            "Answer structure"
+        ],
+
+        GK:[
+            "Technology awareness",
+            "Business basics",
+            "Current affairs practice",
+            "Computer awareness",
+            "General reasoning"
+        ]
+
+    };
+
+
+    openModal(`
+
+        <h2>
+            ${type} Practice Material
+        </h2>
+
+        <p style="color:var(--muted);margin:12px 0 20px">
+            Topics you can practice in this arena.
+        </p>
+
+        <div style="display:grid;gap:10px">
+
+            ${materials[type].map((x,i)=>
+                `
+                <div style="
+                    padding:15px;
+                    border:1px solid var(--border);
+                    border-radius:12px;
+                ">
+                    ${i+1}. ${x}
+                </div>
+                `
+            ).join("")}
+
+        </div>
+
+        <button class="btn btn-primary"
+                style="margin-top:25px"
+                onclick="closeModal();showPage('practice')">
+            🎯 Start Practice
+        </button>
+
+    `);
+
+}
+
+
+/* =====================================================
+                    COMPANY MODAL
+===================================================== */
+
+function openCompany(company){
+
+    const topics = {
+
+        TCS:
+        "Aptitude, logical reasoning, programming fundamentals, coding and HR.",
+
+        Infosys:
+        "Logic, programming, problem solving, technical fundamentals and HR.",
+
+        Accenture:
+        "Aptitude, coding, communication and problem solving.",
+
+        Deloitte:
+        "Technical fundamentals, communication and HR preparation.",
+
+        Amazon:
+        "DSA, problem solving, coding and behavioral preparation.",
+
+        Microsoft:
+        "DSA, computer science fundamentals and problem solving."
+
+    };
+
+
+    openModal(`
+
+        <h2>
+            🏢 ${company} Preparation
+        </h2>
+
+        <p style="margin-top:15px;line-height:1.7;color:var(--muted)">
+            ${topics[company]}
+        </p>
+
+        <div style="
+            margin-top:20px;
+            padding:18px;
+            border-radius:14px;
+            background:rgba(255,107,0,.08);
+        ">
+            ⚠️ This is a general learning roadmap,
+            not an official company hiring-process claim.
+        </div>
+
+        <button class="btn btn-primary"
+                style="margin-top:25px"
+                onclick="closeModal();showPage('practice')">
+            🚀 Start Preparing
+        </button>
+
+    `);
+
+}
+
+
+/* =====================================================
+                    MODAL
+===================================================== */
+
+function openModal(content){
+
+    document.getElementById("modalContent")
+    .innerHTML = content;
+
+    document.getElementById("modal")
+    .classList.add("show");
+
+}
+
+
+function closeModal(){
+
+    document.getElementById("modal")
+    .classList.remove("show");
+
+}
+
+
+function closeModalOutside(event){
+
+    if(event.target.id === "modal"){
+
+        closeModal();
+
+    }
+
+}
+
+
+/* =====================================================
+                    TOAST
+===================================================== */
+
+function showToast(message){
+
+    const toast =
+        document.getElementById("toast");
+
+    toast.textContent = message;
+
+    toast.classList.add("show");
+
+    setTimeout(()=>{
+
+        toast.classList.remove("show");
+
+    },2200);
+
+}
+
+
+/* =====================================================
+                    MOBILE MENU
+===================================================== */
+
+function openMobileMenu(){
+
+    const links =
+        document.querySelector(".nav-links");
+
+    if(links.style.display === "flex"){
+
+        links.style.display = "";
+
+    }else{
+
+        links.style.display = "flex";
+
+        links.style.position = "absolute";
+        links.style.top = "72px";
+        links.style.left = "0";
+        links.style.right = "0";
+        links.style.padding = "15px";
+        links.style.background = "var(--card)";
+        links.style.flexDirection = "column";
+        links.style.borderBottom =
+            "1px solid var(--border)";
+
+    }
+
+}
+
+
+/* =====================================================
+                    INIT
+===================================================== */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    ()=>{
+
+        loadTheme();
+
+        renderQuestion();
+
+        updateUI();
+
+        showPage("home");
+
+    }
+);
+
+</script>
+
+</body>
+</html>
