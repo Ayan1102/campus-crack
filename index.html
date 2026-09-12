@@ -3213,6 +3213,101 @@ document.addEventListener(
 );
 
 </script>
+```html
+<!-- ===== CAMPUSCRACK INFO ADD-ON ===== -->
+
+<style>
+.cc-footer{margin-top:70px;padding:35px 6%;background:#0b1220;color:#cbd5e1;
+border-top:1px solid #ffffff15}.cc-f{display:flex;justify-content:space-between;
+gap:30px;flex-wrap:wrap}.cc-f h2{color:#fff;margin:0 0 10px}.cc-f p{max-width:430px;line-height:1.6}
+.cc-links{display:flex;gap:10px;flex-wrap:wrap}.cc-links button{background:none;border:0;
+color:#cbd5e1;cursor:pointer;padding:8px}.cc-links button:hover{color:#ff8a25}
+.cc-social{margin-top:12px}.cc-social a{color:#ff8a25;text-decoration:none}
+.cc-copy{text-align:center;border-top:1px solid #ffffff15;margin-top:25px;padding-top:20px;font-size:13px}
+
+.cc-pop{display:none;position:fixed;inset:0;background:#000b;z-index:99999;
+place-items:center;padding:20px}.cc-card{max-width:650px;max-height:80vh;overflow:auto;
+background:#111827;color:#dbe4f0;border:1px solid #ffffff18;border-radius:20px;padding:28px;
+box-shadow:0 20px 70px #000}.cc-card h2{color:#fff}.cc-card h3{color:#ff963f}
+.cc-close{float:right;background:#ef4444;color:white;border:0;border-radius:8px;
+padding:7px 11px;cursor:pointer}.cc-card p{line-height:1.7}
+</style>
+
+<footer class="cc-footer">
+  <div class="cc-f">
+    <div>
+      <h2>🎓 CampusCrack</h2>
+      <p>
+        A student-focused interview preparation platform designed to help
+        college students build confidence, practice skills and prepare for placements.
+      </p>
+      <div class="cc-social">
+        📸 Instagram:
+        <a href="https://instagram.com/JINUXLIFTS/" target="_blank">
+          @jinuxlifts
+        </a>
+      </div>
+    </div>
+
+    <div>
+      <h3>Quick Links</h3>
+      <div class="cc-links">
+        <button onclick="ccOpen('about')">About</button>
+        <button onclick="ccOpen('privacy')">Privacy Policy</button>
+        <button onclick="ccOpen('terms')">Terms & Conditions</button>
+        <button onclick="ccOpen('contact')">Contact Us</button>
+        <button onclick="ccOpen('disclaimer')">Disclaimer</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="cc-copy">
+    © 2026 CampusCrack • Student Project • All Rights Reserved
+  </div>
+</footer>
+
+<!-- POPUP -->
+<div class="cc-pop" id="ccPop" onclick="if(event.target===this)ccClose()">
+  <div class="cc-card">
+    <button class="cc-close" onclick="ccClose()">✕</button>
+    <div id="ccContent"></div>
+  </div>
+</div>
+
+<script>
+const ccData={
+about:`<h2>🎓 About CampusCrack</h2>
+<p>CampusCrack is a student-focused interview preparation platform created to make placement preparation simple, structured and engaging.</p>
+<h3>Our Goal</h3><p>Help students practice interview questions, improve technical knowledge, build communication skills and track their preparation journey.</p>`,
+
+privacy:`<h2>🔒 Privacy Policy</h2>
+<p>CampusCrack may collect basic information such as name and email when students create an account.</p>
+<h3>How We Use Information</h3><p>Information may be used to provide login, profile, progress tracking and personalized preparation features.</p>
+<h3>Data Safety</h3><p>We do not intentionally sell personal information to third parties. Students should avoid entering sensitive personal information.</p>`,
+
+terms:`<h2>📜 Terms & Conditions</h2>
+<p>By using CampusCrack, you agree to use the platform responsibly and only for educational purposes.</p>
+<h3>Content</h3><p>Practice questions and preparation material are provided for learning purposes and may not represent any company's actual interview process.</p>
+<h3>Accounts</h3><p>Users are responsible for keeping their account credentials secure and for activity performed through their account.</p>`,
+
+contact:`<h2>📞 Contact Us</h2>
+<p>Have a question, suggestion or found an issue?</p>
+<h3>Email</h3><p>📧 ansariayan98047@gmail.com</p>
+<h3>Instagram</h3><p>📸 jinuxlifts</p>
+<p>We'd love to hear your feedback and suggestions.</p>`,
+
+disclaimer:`<h2>⚠️ Disclaimer</h2>
+<p>CampusCrack is an independent student project created for educational and interview-preparation purposes.</p>
+<p>It is not officially affiliated with or endorsed by Lovely Professional University, TCS, Infosys, Accenture, Deloitte, Amazon, Microsoft or any other company mentioned on the platform.</p>`
+};
+
+function ccOpen(x){
+ document.getElementById("ccContent").innerHTML=ccData[x];
+ document.getElementById("ccPop").style.display="grid";
+}
+function ccClose(){document.getElementById("ccPop").style.display="none"}
+</script>
+```
 
 </body>
 </html>
