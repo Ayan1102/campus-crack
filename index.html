@@ -3213,101 +3213,289 @@ document.addEventListener(
 );
 
 </script>
-```html
-<!-- ===== CAMPUSCRACK INFO ADD-ON ===== -->
-
 <style>
-.cc-footer{margin-top:70px;padding:35px 6%;background:#0b1220;color:#cbd5e1;
-border-top:1px solid #ffffff15}.cc-f{display:flex;justify-content:space-between;
-gap:30px;flex-wrap:wrap}.cc-f h2{color:#fff;margin:0 0 10px}.cc-f p{max-width:430px;line-height:1.6}
-.cc-links{display:flex;gap:10px;flex-wrap:wrap}.cc-links button{background:none;border:0;
-color:#cbd5e1;cursor:pointer;padding:8px}.cc-links button:hover{color:#ff8a25}
-.cc-social{margin-top:12px}.cc-social a{color:#ff8a25;text-decoration:none}
-.cc-copy{text-align:center;border-top:1px solid #ffffff15;margin-top:25px;padding-top:20px;font-size:13px}
-
-.cc-pop{display:none;position:fixed;inset:0;background:#000b;z-index:99999;
-place-items:center;padding:20px}.cc-card{max-width:650px;max-height:80vh;overflow:auto;
-background:#111827;color:#dbe4f0;border:1px solid #ffffff18;border-radius:20px;padding:28px;
-box-shadow:0 20px 70px #000}.cc-card h2{color:#fff}.cc-card h3{color:#ff963f}
-.cc-close{float:right;background:#ef4444;color:white;border:0;border-radius:8px;
-padding:7px 11px;cursor:pointer}.cc-card p{line-height:1.7}
+.cc-footer{
+  background:#080b12;
+  color:#cbd5e1;
+  padding:55px 7% 20px;
+  border-top:1px solid #252d3a;
+  font-family:Arial,sans-serif;
+}
+.cc-footer-wrap{
+  max-width:1200px;
+  margin:auto;
+}
+.cc-footer-grid{
+  display:grid;
+  grid-template-columns:1.6fr 1fr 1fr 1fr;
+  gap:40px;
+}
+.cc-brand h2{
+  color:#fff;
+  font-size:27px;
+  margin:0 0 12px;
+}
+.cc-brand p{
+  color:#94a3b8;
+  line-height:1.7;
+  font-size:14px;
+  max-width:360px;
+}
+.cc-footer h3{
+  color:#fff;
+  font-size:15px;
+  margin:0 0 17px;
+}
+.cc-footer a{
+  display:block;
+  color:#94a3b8;
+  text-decoration:none;
+  font-size:14px;
+  margin:11px 0;
+  transition:.25s;
+}
+.cc-footer a:hover{
+  color:#ff8a00;
+  transform:translateX(4px);
+}
+.cc-contact{
+  color:#94a3b8;
+  font-size:14px;
+  line-height:1.8;
+}
+.cc-social{
+  display:inline-block;
+  margin-top:12px!important;
+  padding:10px 15px;
+  background:#151c29;
+  border:1px solid #293448;
+  border-radius:10px;
+  color:#fff!important;
+}
+.cc-bottom{
+  margin-top:45px;
+  padding-top:18px;
+  border-top:1px solid #202838;
+  display:flex;
+  justify-content:space-between;
+  gap:15px;
+  flex-wrap:wrap;
+  color:#64748b;
+  font-size:12px;
+}
+.cc-modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  z-index:99999;
+  background:rgba(0,0,0,.75);
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+}
+.cc-modal-card{
+  width:100%;
+  max-width:620px;
+  max-height:80vh;
+  overflow:auto;
+  background:#101722;
+  border:1px solid #2b3749;
+  border-radius:18px;
+  padding:28px;
+  box-shadow:0 25px 80px #000;
+}
+.cc-modal-card h2{
+  color:#fff;
+  margin-top:0;
+}
+.cc-modal-card p{
+  color:#aebbd0;
+  line-height:1.75;
+  font-size:14px;
+}
+.cc-close{
+  float:right;
+  border:0;
+  background:#263244;
+  color:#fff;
+  border-radius:8px;
+  padding:7px 11px;
+  cursor:pointer;
+}
+@media(max-width:900px){
+  .cc-footer-grid{
+    grid-template-columns:1fr 1fr;
+  }
+}
+@media(max-width:600px){
+  .cc-footer{
+    padding:40px 22px 18px;
+  }
+  .cc-footer-grid{
+    grid-template-columns:1fr;
+    gap:28px;
+  }
+  .cc-bottom{
+    text-align:center;
+    justify-content:center;
+  }
+}
 </style>
 
 <footer class="cc-footer">
-  <div class="cc-f">
-    <div>
-      <h2>🎓 CampusCrack</h2>
-      <p>
-        A student-focused interview preparation platform designed to help
-        college students build confidence, practice skills and prepare for placements.
-      </p>
-      <div class="cc-social">
-        📸 Instagram:
-        <a href="https://instagram.com/JINUXLIFTS/" target="_blank">
-          @jinuxlifts
-        </a>
-      </div>
-    </div>
+<div class="cc-footer-wrap">
 
-    <div>
-      <h3>Quick Links</h3>
-      <div class="cc-links">
-        <button onclick="ccOpen('about')">About</button>
-        <button onclick="ccOpen('privacy')">Privacy Policy</button>
-        <button onclick="ccOpen('terms')">Terms & Conditions</button>
-        <button onclick="ccOpen('contact')">Contact Us</button>
-        <button onclick="ccOpen('disclaimer')">Disclaimer</button>
-      </div>
-    </div>
-  </div>
+<div class="cc-footer-grid">
 
-  <div class="cc-copy">
-    © 2026 CampusCrack • Student Project • All Rights Reserved
-  </div>
+<!-- BRAND -->
+
+<div class="cc-brand">
+<h2>🚀 CampusCrack</h2>
+
+<p>
+Your smart interview-preparation companion. 
+Practice, improve your skills, track your progress
+and become placement ready.
+</p>
+
+<a class="cc-social"
+href="https://instagram.com/jinuxlifts"
+target="_blank"
+rel="noopener noreferrer">
+📸 Instagram · @jinuxlifts </a>
+
+</div>
+
+<!-- PLATFORM -->
+
+<div>
+<h3>Platform</h3>
+
+<a href="#home">Home</a> <a href="#practice">Practice</a> <a href="#interview">Interview Arena</a> <a href="#leaderboard">Leaderboard</a> <a href="#companies">Companies</a>
+
+</div>
+
+<!-- COMPANY -->
+
+<div>
+<h3>CampusCrack</h3>
+
+<a href="#" onclick="ccFooterOpen('about');return false;">
+About CampusCrack
+</a>
+
+<a href="#" onclick="ccFooterOpen('contact');return false;">
+Contact Us
+</a>
+
+<a href="#" onclick="ccFooterOpen('privacy');return false;">
+Privacy Policy
+</a>
+
+<a href="#" onclick="ccFooterOpen('terms');return false;">
+Terms & Conditions
+</a>
+
+<a href="#" onclick="ccFooterOpen('disclaimer');return false;">
+Disclaimer
+</a>
+</div>
+
+<!-- CONTACT -->
+
+<div>
+<h3>Contact</h3>
+
+<div class="cc-contact">
+📧 ansariayan98047@gmail.com<br>
+📞 +91 XXXXX XXXXX<br>
+📍 Punjab, India
+</div>
+
+<a href="mailto:ansariayan98047@gmail.com">
+✉️ Send us an Email
+</a>
+
+<a href="tel:+91XXXXXXXXXX">
+📱 Call Us
+</a>
+</div>
+
+</div>
+
+<div class="cc-bottom">
+<span>© 2026 CampusCrack. All Rights Reserved.</span>
+<span>Built with ❤️ for students</span>
+</div>
+
+</div>
 </footer>
 
-<!-- POPUP -->
-<div class="cc-pop" id="ccPop" onclick="if(event.target===this)ccClose()">
-  <div class="cc-card">
-    <button class="cc-close" onclick="ccClose()">✕</button>
-    <div id="ccContent"></div>
-  </div>
+<!-- INFORMATION MODAL -->
+
+<div class="cc-modal" id="ccFooterModal">
+
+<div class="cc-modal-card">
+
+<button class="cc-close"
+onclick="ccFooterClose()">✕</button>
+
+<h2 id="ccFooterTitle"></h2>
+
+<p id="ccFooterText"></p>
+
+</div>
 </div>
 
 <script>
-const ccData={
-about:`<h2>🎓 About CampusCrack</h2>
-<p>CampusCrack is a student-focused interview preparation platform created to make placement preparation simple, structured and engaging.</p>
-<h3>Our Goal</h3><p>Help students practice interview questions, improve technical knowledge, build communication skills and track their preparation journey.</p>`,
+function ccFooterOpen(type){
 
-privacy:`<h2>🔒 Privacy Policy</h2>
-<p>CampusCrack may collect basic information such as name and email when students create an account.</p>
-<h3>How We Use Information</h3><p>Information may be used to provide login, profile, progress tracking and personalized preparation features.</p>
-<h3>Data Safety</h3><p>We do not intentionally sell personal information to third parties. Students should avoid entering sensitive personal information.</p>`,
+const info={
 
-terms:`<h2>📜 Terms & Conditions</h2>
-<p>By using CampusCrack, you agree to use the platform responsibly and only for educational purposes.</p>
-<h3>Content</h3><p>Practice questions and preparation material are provided for learning purposes and may not represent any company's actual interview process.</p>
-<h3>Accounts</h3><p>Users are responsible for keeping their account credentials secure and for activity performed through their account.</p>`,
+about:[
+"About CampusCrack",
+"CampusCrack is a student-focused interview preparation platform designed to make placement preparation more structured, interactive and engaging. Students can practice DSA, aptitude, HR, technical and communication skills while tracking their preparation progress."
+],
 
-contact:`<h2>📞 Contact Us</h2>
-<p>Have a question, suggestion or found an issue?</p>
-<h3>Email</h3><p>📧 ansariayan98047@gmail.com</p>
-<h3>Instagram</h3><p>📸 jinuxlifts</p>
-<p>We'd love to hear your feedback and suggestions.</p>`,
+privacy:[
+"Privacy Policy",
+"CampusCrack may collect information such as your name, email address and learning progress when account features are used. This information is used to provide and improve the platform. We do not intentionally sell personal information. If Firebase is connected, account and application data may be stored using the configured Firebase services."
+],
 
-disclaimer:`<h2>⚠️ Disclaimer</h2>
-<p>CampusCrack is an independent student project created for educational and interview-preparation purposes.</p>
-<p>It is not officially affiliated with or endorsed by Lovely Professional University, TCS, Infosys, Accenture, Deloitte, Amazon, Microsoft or any other company mentioned on the platform.</p>`
+terms:[
+"Terms & Conditions",
+"CampusCrack is an educational preparation platform. The content and practice material are provided for learning purposes. Users are expected to use the platform responsibly. Company-related preparation material is general guidance and does not represent an official hiring process."
+],
+
+contact:[
+"Contact Us",
+"For feedback, suggestions, collaboration or support, contact us through email or Instagram. Email: YOUR_EMAIL@gmail.com | Instagram: @YOUR_INSTAGRAM_ID | Phone: +91 XXXXX XXXXX"
+],
+
+disclaimer:[
+"Disclaimer",
+"CampusCrack is an independent student project and is not officially affiliated with, endorsed by or sponsored by Lovely Professional University (LPU) or any company mentioned on this website. Company names and references are used for educational and identification purposes."
+]
+
 };
 
-function ccOpen(x){
- document.getElementById("ccContent").innerHTML=ccData[x];
- document.getElementById("ccPop").style.display="grid";
+document.getElementById("ccFooterTitle").textContent=info[type][0];
+
+document.getElementById("ccFooterText").textContent=info[type][1];
+
+document.getElementById("ccFooterModal").style.display="flex";
 }
-function ccClose(){document.getElementById("ccPop").style.display="none"}
+
+function ccFooterClose(){
+document.getElementById("ccFooterModal").style.display="none";
+}
+
+document.getElementById("ccFooterModal").addEventListener("click",function(e){
+if(e.target===this){
+ccFooterClose();
+}
+});
 </script>
-```
 
 </body>
 </html>
